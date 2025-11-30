@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace WpfApp8
 {
@@ -28,10 +30,6 @@ namespace WpfApp8
 
         private void submit(object sender, RoutedEventArgs e)
         {
-            TextBlock show = new TextBlock();
-            show.Text = "Show";
-            show.FontSize = 40;
-            sp.Children.Add(show);
             List<Animal> list = new List<Animal>();
             try
             {
@@ -40,9 +38,21 @@ namespace WpfApp8
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            //sp.ItemsSource = list;
-            //name.Text = (name.SelectedItem as Animal).Name;
+            }//ehat if name is a number??
+            TextShow.Visibility = Visibility.Visible;
+            Animal a=new Animal(name.Text, DateTime.Parse(birth.Text), type.Text, gender.Text, double.Parse(weight.Text));
+            list.Add(a);
+            mySp.ItemsSource = list;
+            mySp.Visibility = Visibility.Visible;
+            //name.Text = (sp.SelectedItem as Animal).Name;
+            //birth.Text = (sp.SelectedItem as Animal).Birth.ToString();
+            //type.Text = (sp.SelectedItem as Animal).Type;
+            //gender.Text = (sp.SelectedItem as Animal).Gender;
+        }
+
+        private void ShowDetails(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show("hi");
         }
     }
 }
