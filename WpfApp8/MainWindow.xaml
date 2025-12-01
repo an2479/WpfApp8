@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -32,19 +32,25 @@
             <TextBox x:Name="weight" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
             <Button Content="Submit" Click="submit" Width="100" Height="40" FontSize="22" HorizontalAlignment="Left"/>
         </StackPanel>
-        <TextBlock Grid.Row="1" x:Name="TextShow" Text="Show" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
-        <ListView Name="mySp" SelectionChanged="ShowDetails">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="100"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <!--<ListView Grid.Row="1" x:Name="sp">
-            <ListView.View>
-                <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"/>
-                <GridViewColumn Header="Birth" Width="140" DisplayMemberBinding="{Binding Birth}"/>
-            </ListView.View>
-        </ListView>-->
+        <Button Grid.Row="1" x:Name="ShowAnimals" Click="show" Content="Show" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <!--<ListBox  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="250"/>-->
+            <StackPanel x:Name="showAnimals">
+                
+            </StackPanel>
+            <!--ListView Name="myL" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Birth" DisplayMemberBinding="{Binding Birth}"/>
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender}"/>
+                        <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+        </StackPanel>
+       
     </Grid>
 </Window>

@@ -23,6 +23,8 @@ namespace WpfApp8
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        List<Animal> list = new List<Animal>();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,29 +32,35 @@ namespace WpfApp8
 
         private void submit(object sender, RoutedEventArgs e)
         {
-            List<Animal> list = new List<Animal>();
-            try
-            {
-                list.Add(new Animal(name.Text, DateTime.Parse(birth.Text), type.Text, gender.Text, double.Parse(weight.Text)));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }//ehat if name is a number??
-            TextShow.Visibility = Visibility.Visible;
-            Animal a=new Animal(name.Text, DateTime.Parse(birth.Text), type.Text, gender.Text, double.Parse(weight.Text));
-            list.Add(a);
-            mySp.ItemsSource = list;
-            mySp.Visibility = Visibility.Visible;
+            MessageBox.Show("Submitted!");
+            Animal animal = new Animal() { Name= name.Text, Birth= DateTime.Parse(birth.Text), Gender=gender.Text, Type= type.Text , Weight=double.Parse(weight.Text)};
+            list.Add(animal);
             //name.Text = (sp.SelectedItem as Animal).Name;
             //birth.Text = (sp.SelectedItem as Animal).Birth.ToString();
             //type.Text = (sp.SelectedItem as Animal).Type;
             //gender.Text = (sp.SelectedItem as Animal).Gender;
+
         }
 
-        private void ShowDetails(object sender, SelectionChangedEventArgs e)
+        private void show(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("hi");
+            //myL.ItemsSource = null;
+            //myL.ItemsSource = animal;
+            //TextBlock t= new TextBlock ();
+            //t.Text = ;
+            //mySp.Padding(t);
+        }
+
+        private void show(object sender, RoutedEventArgs e)
+        {
+            StackPanel sp = new StackPanel();
+            Border border = new Border();
+
+            TextBlock textBlock = new TextBlock() { Text = "name: " + name + "birth: " + birth.Text + "type: " + type.Text + "gender: " + gender.Text + "weight: " + weight.Text };
+
+            sp.Children.Add(textBlock);
+            border.Child = sp;
+            showAnimals.Children.Add(border);
         }
     }
 }
