@@ -30,28 +30,13 @@ namespace WpfApp8
             InitializeComponent();
         }
 
-        private void submit(object sender, RoutedEventArgs e)
+        private void Submit(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Submitted!");
             Animal animal = new Animal() { Name= name.Text, Birth= DateTime.Parse(birth.Text), Gender=gender.Text, Type= type.Text , Weight=double.Parse(weight.Text)};
             list.Add(animal);
-            //name.Text = (sp.SelectedItem as Animal).Name;
-            //birth.Text = (sp.SelectedItem as Animal).Birth.ToString();
-            //type.Text = (sp.SelectedItem as Animal).Type;
-            //gender.Text = (sp.SelectedItem as Animal).Gender;
-
         }
-
-        private void show(object sender, MouseButtonEventArgs e)
-        {
-            //myL.ItemsSource = null;
-            //myL.ItemsSource = animal;
-            //TextBlock t= new TextBlock ();
-            //t.Text = ;
-            //mySp.Padding(t);
-        }
-
-        private void show(object sender, RoutedEventArgs e)
+        private void Show(object sender, RoutedEventArgs e)
         {
             StackPanel sp = new StackPanel();
             Border border = new Border();

@@ -13,14 +13,7 @@ namespace WpfApp8
         private string type;
         private string gender;
         private double weight;
-        //public Animal(string name, DateTime birth, string type, string gender, double weight)
-        //{
-        //    this.name = name;
-        //    this.birth = birth;
-        //    this.type = type;
-        //    this.gender = gender;
-        //    this.weight = weight;
-        //}
+
         public string Name { get => name; set => name = value; }
         public DateTime Birth { get => birth; set => birth = value; }
         public string Type { get => type; set => type = value; }
