@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WpfApp8
 {
@@ -33,18 +34,17 @@ namespace WpfApp8
         private void Submit(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Submitted!");
-            Animal animal = new Animal() { Name= name.Text, Birth= DateTime.Parse(birth.Text), Gender=gender.Text, Type= type.Text , Weight=double.Parse(weight.Text)};
+            Animal animal = new Animal() { Name= name.Text, Birth = birth.Text, Gender=gender.Text, Type= type.Text , Weight=double.Parse(weight.Text)};
             list.Add(animal);
         }
         private void Show(object sender, RoutedEventArgs e)
         {
-            StackPanel sp = new StackPanel();
             Border border = new Border();
-
-            TextBlock textBlock = new TextBlock() { Text = "name: " + name + "birth: " + birth.Text + "type: " + type.Text + "gender: " + gender.Text + "weight: " + weight.Text };
-
-            sp.Children.Add(textBlock);
-            border.Child = sp;
+            border.BorderBrush = Brushes.Black;
+            border.BorderThickness = new Thickness(1);
+            TextBlock textBlock = new TextBlock() { Text = "name: " + name.Text + "\n" + "birth: " + birth.Text + "\n" + "type: " + type.Text + "\n" + "gender: " + gender.Text + "weight: " + weight.Text };
+            textBlock.FontSize = 15;
+            border.Child = textBlock;
             showAnimals.Children.Add(border);
         }
     }

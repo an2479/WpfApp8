@@ -36,7 +36,7 @@ namespace WpfApp8
             return new ValidationResult(true, null);
         }
     }
-    public class Weight : ValidationRule
+    public class Weight : ValidationRule//////////////////////////
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
@@ -57,15 +57,18 @@ namespace WpfApp8
         {
             string str = value as string;
             DateTime d;
-            DateTime current = DateTime.Now;
+            DateTime current = DateTime.Now.Date;
             if (DateTime.TryParse(str, out d))
             {
+                d = d.Date;
                 if (d > current)
                     return new ValidationResult(false, "can't be born in the future");
-                return new ValidationResult(true,null);
+                return new ValidationResult(true, null);
             }
-            return new ValidationResult(false, "empty/not correct parameters");
+            if (str == null)
+                return new ValidationResult(false, "can't be null");
+            return new ValidationResult(false, "not correct parameters");
         }
     }
-
+    
 }

@@ -28,15 +28,7 @@
             <TextBlock Text="Weight: " FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" >
-            <TextBox x:Name="name" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBox x:Name="birth" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBox x:Name="type" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBox x:Name="gender" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBox x:Name="weight" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <Button Content="Submit" Click="Submit" Width="100" Height="40" FontSize="22" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <StackPanel Margin="50" Grid.Row="1">
-            <TextBox x:Name="txtName" Width="200">
+            <TextBox x:Name="name" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -46,16 +38,19 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="txtBirth" Width="200" Visibility="Hidden">
+            <!--<DatePicker x:Name="birthPicker" 
+                SelectedDate="{Binding Birth, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            </DatePicker>-->
+            <TextBox x:Name="birth" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
-                    <Binding Path="Birth" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Birth" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
-                            <local:Birth/>
+                            <local:Birth />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="txtType" Width="200">
+            <TextBox x:Name="type" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Type" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -65,7 +60,7 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="txtGender" Width="200">
+            <TextBox x:Name="gender" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Gender" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -75,31 +70,19 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="txtWeight" Width="200" Visibility="Hidden">
+            <TextBox x:Name="weight" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
-                    <Binding Path="Weight" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Weigh" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:Weight/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+            <Button Content="Submit" Click="Submit" Width="100" Height="40" FontSize="22" HorizontalAlignment="Left"/>
         </StackPanel>
-        
         <Button Grid.Row="1" Click="Show" Content="Show" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <!--<ListBox  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="250"/>-->
-        <StackPanel x:Name="showAnimals"/>
-
-            <!--ListView Name="myL" Grid.Row="1">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Birth" DisplayMemberBinding="{Binding Birth}"/>
-                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
-                        <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender}"/>
-                        <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>-->
+        <StackPanel Margin="70" Grid.Row="1" x:Name="showAnimals"/>
     </Grid>
 </Window>
