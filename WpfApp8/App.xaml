@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:WpfApp8"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate x:Key="errorMessage">
+            <Border BorderBrush="HotPink" BorderThickness="2">
+                <Grid>
+                    <AdornedElementPlaceholder>
+                        <TextBlock Text="{Binding [0].ErrorContent}" 
+                                              Foreground="DeepPink" 
+						     VerticalAlignment="Center" 
+                                              HorizontalAlignment="Right"
+						     Margin="0,0,5,0"/>
+                    </AdornedElementPlaceholder>
+                </Grid>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

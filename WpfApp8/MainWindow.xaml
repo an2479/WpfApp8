@@ -5,30 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp8"
         mc:Ignorable="d"
+        Background="#FFFDF9"
+        FontFamily="Freestyle Script"
+        FontSize="26"
+        Foreground="#4C342A"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:Animal/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.ColumnSpan="3" Text="Zoo" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="Name: " FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBlock Text="Birth: " Margin="0,0,0,10" FontSize="22" HorizontalAlignment="Left"/>
-            <TextBlock Text="Type: " FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBlock Text="Gender: " FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-            <TextBlock Text="Weight: " FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Name: " Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Birth: " Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Type: " Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Gender: " Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Weight: " Margin="0,0,0,10" HorizontalAlignment="Center"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2" >
-            <TextBox x:Name="name" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <TextBox x:Name="name" Validation.ErrorTemplate="{StaticResource errorMessage}" Width="220" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -38,10 +42,7 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <!--<DatePicker x:Name="birthPicker" 
-                SelectedDate="{Binding Birth, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-            </DatePicker>-->
-            <TextBox x:Name="birth" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBox x:Name="birth" Validation.ErrorTemplate="{StaticResource errorMessage}" Width="220" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Birth" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
@@ -50,39 +51,37 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="type" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBox x:Name="type" Validation.ErrorTemplate="{StaticResource errorMessage}" Width="220" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Type" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:MinLength MinLen="3"/>
-                            <local:MaxLength MaxLen="8"/>
+                            <local:MaxLength MaxLen="10"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="gender" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBox x:Name="gender" Validation.ErrorTemplate="{StaticResource errorMessage}" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
                     <Binding Path="Gender" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <local:MinLength MinLen="1"/>
-                            <local:MaxLength MaxLen="1"/>
+                            <local:Gender/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="weight" Width="220" Height="30" FontSize="22" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBox x:Name="weight" Validation.ErrorTemplate="{StaticResource errorMessage}" Width="220" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBox.Text>
-                    <Binding Path="Weigh" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Weight" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:Weight/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <Button Content="Submit" Click="Submit" Width="100" Height="40" FontSize="22" HorizontalAlignment="Left"/>
+            <Button Content="Submit" Background="#C19A6B" Click="Submit" Width="100" Height="40" HorizontalAlignment="Left"/>
         </StackPanel>
-        <Button Grid.Row="1" Click="Show" Content="Show" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <!--<ListBox  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="250"/>-->
-        <StackPanel Margin="70" Grid.Row="1" x:Name="showAnimals"/>
+        <Button Content="Show" Background="#C19A6B" Click="Show" Grid.Row="2" Grid.Column="2" Width="100" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <WrapPanel Margin="50" Grid.Row="2" Grid.Column="2" x:Name="showAnimals"/>
     </Grid>
 </Window>
