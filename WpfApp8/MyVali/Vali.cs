@@ -15,7 +15,7 @@ namespace WpfApp8
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string str= value as string;
-            if (str == null)
+            if (str == "")
                 return new ValidationResult(false, "can't be null");
             if (str.Length<MinLen)
             {
@@ -31,7 +31,7 @@ namespace WpfApp8
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string str = value as string;
-            if (str == null)
+            if (str == "")
                 return new ValidationResult(false, "can't be null");
             if (str.Length > MaxLen)
             {
@@ -46,7 +46,7 @@ namespace WpfApp8
         {
             string str = value as string;
             double h;
-            if (str == null)
+            if (str == "")
                 return new ValidationResult(false, "empty");
             if (Double.TryParse(str, out h))
             {
@@ -64,7 +64,7 @@ namespace WpfApp8
             string str = value as string;
             DateTime d;
             DateTime current = DateTime.Now.Date;
-            if (str == null)
+            if (str == "")
                 return new ValidationResult(false, "empty");
             if (DateTime.TryParse(str, out d))
             {
@@ -82,7 +82,7 @@ namespace WpfApp8
         {
             string str = value as string;
             char c;
-            if (str == null)
+            if (str == "")
                 return new ValidationResult(false, "can't be null");
             if(char.TryParse(str, out c))
             {
@@ -94,5 +94,4 @@ namespace WpfApp8
             return new ValidationResult(false, "incorrect parameters");
         }
     }
-
 }
